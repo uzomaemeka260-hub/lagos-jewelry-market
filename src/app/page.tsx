@@ -1,68 +1,70 @@
-import Image from "next/image";
+'use client';
+import React, { useState } from 'react';
+import Link from 'next/link';
+import { ArrowRight, Gem, X } from 'lucide-react';
+import GlobalSearchBar from '@/components/GlobalSearchBar';
+import ProductCard from '@/components/ProductCard';
+
+const JEWELLERY_WINGS = [
+  { title: "Ates Gold Market", slug: "ates-gold", tagline: "Premium plated long-lasting gold pieces", items: ["Xuping", "Sunbelle", "CF", "JBL", "DS"], color: "border-amber-400 bg-amber-50/10" },
+  { title: "Steel Market", slug: "steel-market", tagline: "Durable, tarnish-free stainless steel essentials", items: ["Children Set", "Adult Set", "Earring & Pendant Set", "Steel Earring", "Steel Handchain", "Necklace", "Bracelet", "Cubana"], color: "border-slate-400 bg-slate-50/10" },
+  { title: "Fashion Jewelleries", slug: "fashion-jewelleries", tagline: "Trendy everyday statement designs and earrings", items: ["Earring & Pendant", "Earrings", "Chains"], color: "border-pink-400 bg-pink-50/10" },
+  { title: "Zirconia Market", slug: "zirconia", tagline: "High-grade stone settings with diamond-standard cuts", items: ["Stone Earring & Pendant", "Zirconia Earrings"], color: "border-cyan-400 bg-cyan-50/10" },
+  { title: "Dubai / Arabian Set Market", slug: "dubai-arabian", tagline: "Luxury heavyweight bridal wear sets", items: ["Full Bridal Sets", "Mini Sets", "Dubai Bangles"], color: "border-yellow-600 bg-yellow-50/5" }
+];
 
 export default function Home() {
+  const [selectedProduct, setSelectedProduct] = useState<any>(null);
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="min-h-screen bg-neutral-50 text-neutral-900 pb-16">
+      <header className="border-b bg-white sticky top-0 z-50 px-6 py-4 flex flex-col sm:flex-row gap-4 justify-between items-center shadow-xs">
+        <div className="flex items-center gap-1.5 shrink-0">
+          <Gem className="w-5 h-5 text-amber-600" />
+          <span className="text-md font-black tracking-wider text-neutral-800 uppercase">Lagos Jewelry Market</span>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        <GlobalSearchBar onSelectProduct={(product) => setSelectedProduct(product)} />
+
+        <Link href="/vendor/login" className="text-xs bg-neutral-900 hover:bg-neutral-800 text-white font-bold px-3 py-1.5 rounded-lg transition shrink-0">
+          Merchant Portal
+        </Link>
+      </header>
+
+      {/* Target Focus Overlay Modal Frame */}
+      {selectedProduct && (
+        <div className="fixed inset-0 bg-neutral-900/50 backdrop-blur-xs flex items-center justify-center p-4 z-50">
+          <div className="relative w-full max-w-sm bg-white p-2 rounded-2xl shadow-xl">
+            <button type="button" onClick={() => setSelectedProduct(null)} className="absolute top-4 right-4 z-50 p-1.5 bg-white border rounded-full text-neutral-400 hover:text-neutral-600 cursor-pointer">
+              <X className="w-4 h-4" />
+            </button>
+            <ProductCard item={selectedProduct} />
+          </div>
         </div>
+      )}
+
+      <div className="max-w-7xl mx-auto px-6 pt-16 text-center">
+        <h1 className="text-4xl font-black sm:text-5xl text-neutral-800 tracking-tight leading-tight">Nigeria's Ultimate Jewelry Hub</h1>
+        <p className="text-sm text-neutral-500 max-w-lg mx-auto mt-3">Direct digital access to vendor stalls. Browse live listings, specify your items, and complete checkouts seamlessly on WhatsApp.</p>
+      </div>
+
+      <main className="max-w-7xl mx-auto px-6 mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {JEWELLERY_WINGS.map((wing) => (
+          <div key={wing.slug} className={`border rounded-2xl p-6 flex flex-col justify-between shadow-xs hover:shadow-md transition bg-white ${wing.color}`}>
+            <div>
+              <h2 className="text-lg font-black text-neutral-800">{wing.title}</h2>
+              <p className="text-xs text-neutral-500 mt-1 mb-4 leading-relaxed">{wing.tagline}</p>
+              <div className="flex flex-wrap gap-1.5 mb-6">
+                {wing.items.map((item) => (
+                  <span key={item} className="text-[10px] bg-neutral-100 border border-neutral-200 text-neutral-700 px-2 py-0.5 rounded-md font-bold uppercase tracking-wide">{item}</span>
+                ))}
+              </div>
+            </div>
+            <Link href={`/market-hub/${wing.slug}`} className="w-full text-center bg-neutral-900 hover:bg-neutral-800 text-white text-xs font-bold py-2.5 rounded-xl block transition flex items-center justify-center gap-1">
+              Enter Market Section <ArrowRight className="w-3 h-3" />
+            </Link>
+          </div>
+        ))}
       </main>
     </div>
   );
