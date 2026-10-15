@@ -54,7 +54,7 @@ export default function GlobalSearchBar({ onSelectProduct }: GlobalSearchBarProp
         }
       } catch (error) {
         console.error('Fuzzy search failure:', error);
-      } finaly {
+      } finally {
         setIsLoading(false);
       }
     }, 300); // 300ms debounce protection
