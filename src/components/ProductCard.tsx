@@ -52,7 +52,7 @@ ${item.image_url}
 _Please confirm availability and send your bank account details for final payment transfer._`;
 
     const encodedText = encodeURIComponent(orderMessage);
-    const whatsappUrl = `https://wa.me{item.vendors.whatsapp_number}?text=${encodedText}`;
+    const whatsappUrl = `https://wa.me/${item.vendors.whatsapp_number}?text=${encodedText}`;
 
     window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
     setCheckoutMode(false);

@@ -14,10 +14,19 @@ export default async function MarketWingPage({ params, searchParams }: PageProps
   const { wing: currentWingSlug } = await params;
   const { item: itemFilter } = await searchParams;
 
-  const { data: products } = await supabase
-    .from('products')
-    .select('*, vendors!inner(store_name, stall_number, whatsapp_number), market_wings!inner(slug, name)')
-    .eq('market_wings.slug', currentWingSlug);
+  // First get the wing id from the slug
+  const { data: wing } = await supabase
+    .from('market_wings')
+    .select('id')
+    .eq('slug', currentWingSlug)
+    .single();
+
+  const { data: products } = wing
+    ? await supabase
+        .from('products')
+        .select('*, vendors(store_name, stall_number, whatsapp_number), market_wings(slug, name)')
+        .eq('wing_id', wing.id)
+    : { data: null };
 
   const filtered = itemFilter && products
     ? products.filter((p: any) => p.sub_category?.toLowerCase().includes(itemFilter.toLowerCase()) || p.name?.toLowerCase().includes(itemFilter.toLowerCase()))
