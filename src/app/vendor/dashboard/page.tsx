@@ -1,7 +1,7 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { supabase } from '@/lib/supabase';
+import { supabase } from '@/lib/supabase-client';
 import ImageCompressor from '@/components/ImageCompressor';
 import { ShieldCheck, PlusCircle, LogOut } from 'lucide-react';
 
