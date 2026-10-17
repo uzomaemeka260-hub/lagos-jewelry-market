@@ -31,7 +31,7 @@ export default function Home() {
             <Sparkles className="w-4 h-4 text-white" />
           </div>
           <div className="flex flex-col leading-tight">
-            <span className="text-xs font-black tracking-widest uppercase" style={{ color: '#d4af37', textShadow: '0 0 8px rgba(212,175,55,0.5)' }}>Lagos Jewelry</span>
+            <span className="text-xs font-black tracking-widest uppercase gold-glitter">Lagos Jewelry</span>
             <span className="text-[9px] font-bold tracking-widest uppercase text-pink-200">Market Hub</span>
           </div>
         </div>
@@ -60,7 +60,7 @@ export default function Home() {
         <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest mb-4" style={{ background: 'rgba(212,175,55,0.15)', border: '1px solid #d4af37', color: '#92400e' }}>
           <Sparkles className="w-3 h-3" style={{ color: '#d4af37' }} /> Nigeria's #1 Jewelry Hub
         </div>
-        <h1 className="text-4xl font-black sm:text-5xl tracking-tight leading-tight" style={{ background: 'linear-gradient(90deg, #6b21a8, #db2777, #d4af37)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+        <h1 className="text-4xl font-black sm:text-5xl tracking-tight leading-tight gold-glitter">
           Lagos Jewelry Market
         </h1>
         <p className="text-sm text-purple-800 max-w-lg mx-auto mt-3 font-medium">

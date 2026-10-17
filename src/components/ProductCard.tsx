@@ -22,6 +22,7 @@ export default function ProductCard({ item }: ProductCardProps) {
   const [checkoutMode, setCheckoutMode] = useState<boolean>(false);
   const [customerName, setCustomerName] = useState<string>('');
   const [address, setAddress] = useState<string>('');
+  const [lightbox, setLightbox] = useState<boolean>(false);
 
   const unitPrice = typeof item.price === 'string' ? parseFloat(item.price) : item.price;
   const totalPrice = unitPrice * quantity;
@@ -63,11 +64,22 @@ _Please confirm availability and send your bank account details for final paymen
     <div className="bg-white border border-neutral-200 rounded-2xl overflow-hidden shadow-xs hover:shadow-md transition duration-200 flex flex-col justify-between p-4 min-h-[420px]">
       {!checkoutMode ? (
         <>
-          <div className="relative aspect-square w-full bg-neutral-100 rounded-xl overflow-hidden">
-            <img src={item.image_url} alt={item.name} className="w-full h-full object-cover" loading="lazy" />
+          {lightbox && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4" onClick={() => setLightbox(false)}>
+              <div className="relative max-w-lg w-full" onClick={(e) => e.stopPropagation()}>
+                <button onClick={() => setLightbox(false)} className="absolute -top-3 -right-3 w-7 h-7 bg-white rounded-full flex items-center justify-center text-neutral-600 font-bold text-sm shadow-lg z-10 cursor-pointer">✕</button>
+                <img src={item.image_url} alt={item.name} className="w-full rounded-2xl shadow-2xl object-contain max-h-[80vh]" />
+                <p className="text-center text-white text-xs font-bold mt-3 opacity-80">{item.name}</p>
+              </div>
+            </div>
+          )}
+
+          <div className="relative aspect-square w-full bg-neutral-100 rounded-xl overflow-hidden cursor-zoom-in" onClick={() => setLightbox(true)}>
+            <img src={item.image_url} alt={item.name} className="w-full h-full object-cover hover:scale-105 transition duration-300" loading="lazy" />
             <span className="absolute top-2 left-2 bg-neutral-900/90 text-white text-[10px] font-bold px-2 py-0.5 rounded-md uppercase tracking-wider">
               {item.sub_category}
             </span>
+            <span className="absolute bottom-2 right-2 bg-black/50 text-white text-[9px] font-bold px-1.5 py-0.5 rounded-md">🔍 Tap to zoom</span>
           </div>
 
           <div className="mt-4 flex-grow flex flex-col justify-between">

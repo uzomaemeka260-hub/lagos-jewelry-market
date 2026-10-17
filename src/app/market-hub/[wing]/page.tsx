@@ -34,7 +34,7 @@ export default async function MarketWingPage({ params, searchParams }: PageProps
           <div className="w-8 h-8 rounded-full flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #d4af37, #f9e077, #b8860b)', boxShadow: '0 0 10px rgba(212,175,55,0.5)' }}>
             <Sparkles className="w-3.5 h-3.5 text-white" />
           </div>
-          <span className="text-xs font-black tracking-widest uppercase" style={{ color: '#d4af37' }}>Lagos Jewelry Market</span>
+          <span className="text-xs font-black tracking-widest uppercase gold-glitter">Lagos Jewelry Market</span>
         </div>
         <Link href="/" className="text-xs font-bold flex items-center gap-1 transition" style={{ color: '#f9e077' }}>
           <ArrowLeft className="w-3.5 h-3.5" /> Back

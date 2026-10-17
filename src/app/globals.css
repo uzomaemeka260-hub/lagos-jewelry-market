@@ -20,10 +20,23 @@ body {
   100% { background-position: 200% center; }
 }
 
-.gold-shimmer {
-  background: linear-gradient(90deg, #d4af37 0%, #f9e077 40%, #d4af37 60%, #b8860b 100%);
+.gold-glitter {
+  background: linear-gradient(
+    90deg,
+    #b8860b 0%,
+    #d4af37 20%,
+    #fff0a0 35%,
+    #f9e077 45%,
+    #ffd700 50%,
+    #f9e077 55%,
+    #fff0a0 65%,
+    #d4af37 80%,
+    #b8860b 100%
+  );
   background-size: 200% auto;
-  animation: shimmer 3s linear infinite;
+  animation: shimmer 2.5s linear infinite;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 6px rgba(212,175,55,0.8)) drop-shadow(0 0 12px rgba(255,215,0,0.4));
 }
