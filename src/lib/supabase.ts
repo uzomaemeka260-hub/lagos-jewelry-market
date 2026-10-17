@@ -10,7 +10,10 @@ async function supabaseFetch(path: string) {
     },
     cache: 'no-store',
   });
-  if (!res.ok) throw new Error(`Supabase error: ${res.statusText}`);
+  if (!res.ok) {
+    const body = await res.text();
+    throw new Error(`Supabase error: ${res.status} ${res.statusText} — ${body}`);
+  }
   return res.json();
 }
 
