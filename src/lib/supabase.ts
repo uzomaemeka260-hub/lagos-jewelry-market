@@ -1,5 +1,9 @@
-const getUrl = () => process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const getKey = () => process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
+const getUrl = () => process.env.NEXT_PUBLIC_SUPABASE_URL ?? '';
+const getKey = () => process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? '';
+
+if (typeof window === 'undefined') {
+  console.log('[supabase] URL:', process.env.NEXT_PUBLIC_SUPABASE_URL?.slice(0, 30));
+}
 
 async function supabaseFetch(path: string) {
   const res = await fetch(`${getUrl()}/rest/v1/${path}`, {
