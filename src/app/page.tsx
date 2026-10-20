@@ -6,7 +6,7 @@ import GlobalSearchBar from '@/components/GlobalSearchBar';
 import ProductCard from '@/components/ProductCard';
 
 const JEWELLERY_WINGS = [
-  { title: "Ates Gold Market", slug: "ates-gold", tagline: "Premium plated long-lasting gold pieces", items: ["Xuping", "Sunbelle", "CF", "JBL", "DS"] },
+  { title: "Ates Gold Market", slug: "ates-gold", tagline: "Premium plated long-lasting gold pieces", items: ["Xuping", "Sunbelle", "CF", "JBL"] },
   { title: "Steel Market", slug: "steel-market", tagline: "Durable, tarnish-free stainless steel essentials", items: ["Children Set", "Adult Set", "Earring & Pendant Set", "Steel Earring", "Steel Handchain", "Necklace", "Bracelet", "Cubana"] },
   { title: "Fashion Jewelleries", slug: "fashion-jewelleries", tagline: "Trendy everyday statement designs and earrings", items: ["Earring & Pendant", "Earrings", "Chains"] },
   { title: "Zirconia Market", slug: "zirconia", tagline: "High-grade stone settings with diamond-standard cuts", items: ["Stone Earring & Pendant", "Zirconia Earrings"] },

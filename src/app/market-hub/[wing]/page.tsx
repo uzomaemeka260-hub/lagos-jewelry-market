@@ -10,6 +10,25 @@ interface PageProps {
   searchParams: Promise<{ item?: string }>;
 }
 
+const BRAND_INFO: Record<string, { headline: string; description: string }> = {
+  sunbelle: {
+    headline: '✨ Sunbelle Jewelry Collection',
+    description: 'Sunbelle is one of Lagos finest gold-plated jewelry brands, known for its elegant earring sets and stunning earring & pendant combinations. Each piece is crafted to last and designed to turn heads. Browse our latest Sunbelle inventory below — all items available for immediate WhatsApp order and delivery.'
+  },
+  xuping: {
+    headline: '💎 Xuping Jewelry Collection',
+    description: 'Xuping is a premium Chinese gold-plated jewelry brand trusted by thousands of Nigerian buyers. Renowned for its bold designs, long-lasting finish, and affordable luxury. From classic earrings to statement earring & pendant sets, Xuping pieces are perfect for everyday wear and special occasions.'
+  },
+  cf: {
+    headline: '🌟 CF Jewelry Collection',
+    description: 'CF Jewelry offers a wide range of beautifully crafted gold-plated pieces that combine modern style with traditional elegance. Popular among Lagos market buyers for their quality finish and variety of designs. Perfect for gifting or personal styling.'
+  },
+  jbl: {
+    headline: '👑 JBL Jewelry Collection',
+    description: 'JBL Jewelry is a top-tier gold-plated brand offering three distinct categories — classic earrings, earring & pendant sets, and luxurious long sets. Whether you are dressing up for an event or looking for an everyday accessory, JBL has something for every occasion and budget.'
+  },
+};
+
 export default async function MarketWingPage({ params, searchParams }: PageProps) {
   const { wing: currentWingSlug } = await params;
   const { item: itemFilter } = await searchParams;
@@ -59,6 +78,15 @@ export default async function MarketWingPage({ params, searchParams }: PageProps
               {itemFilter}
             </span>
             <Link href={`/market-hub/${currentWingSlug}`} className="text-[10px] text-pink-600 font-bold underline">Clear filter</Link>
+          </div>
+        )}
+
+        {/* Brand writeup — shows when filtering by brand */}
+        {itemFilter && BRAND_INFO[itemFilter.toLowerCase()] && (
+          <div className="mb-8 rounded-2xl p-5" style={{ background: 'rgba(255,255,255,0.75)', border: '1.5px solid rgba(212,175,55,0.3)', backdropFilter: 'blur(12px)' }}>
+            <div className="h-0.5 w-10 rounded-full mb-3" style={{ background: 'linear-gradient(90deg, #d4af37, #f9e077)' }} />
+            <h2 className="text-base font-black mb-2" style={{ color: '#2d1b4e' }}>{BRAND_INFO[itemFilter.toLowerCase()].headline}</h2>
+            <p className="text-xs leading-relaxed" style={{ color: '#6b21a8' }}>{BRAND_INFO[itemFilter.toLowerCase()].description}</p>
           </div>
         )}
 
