@@ -112,22 +112,34 @@ export default async function MarketWingPage({ params, searchParams }: PageProps
             </div>
 
             {/* Category selection buttons */}
-            <p className="text-xs font-black uppercase tracking-widest text-center mb-4" style={{ color: '#2d1b4e' }}>Select a Category to Browse</p>
-            <div className="grid gap-4 sm:grid-cols-2">
+            <p className="text-xs font-black uppercase tracking-widest text-center mb-5" style={{ color: '#2d1b4e' }}>✨ Select a Category to Browse ✨</p>
+            <div className="grid gap-5 sm:grid-cols-2">
               {brandData.categories.map((cat) => (
                 <Link
                   key={cat.subcat}
                   href={`/market-hub/${currentWingSlug}?item=${itemFilter}&cat=${encodeURIComponent(cat.subcat)}`}
-                  className="group rounded-2xl p-5 flex items-center justify-between transition hover:scale-[1.02] duration-200"
-                  style={{ background: 'rgba(255,255,255,0.9)', border: '2.5px solid #d4af37', boxShadow: '0 4px 20px rgba(212,175,55,0.2), inset 0 1px 0 rgba(255,240,160,0.5)' }}
+                  className="group relative rounded-3xl overflow-hidden transition hover:scale-[1.03] duration-200"
+                  style={{ border: '2.5px solid #d4af37', boxShadow: '0 6px 30px rgba(219,39,119,0.15), 0 2px 10px rgba(212,175,55,0.2)' }}
                 >
-                  <div>
-                    <span className="text-xl mb-1 block">{cat.icon}</span>
-                    <h3 className="text-sm font-black" style={{ color: '#2d1b4e' }}>{cat.label}</h3>
-                    <p className="text-xs font-bold mt-0.5" style={{ color: '#d4af37' }}>{cat.price} per piece</p>
-                  </div>
-                  <div className="w-9 h-9 rounded-full flex items-center justify-center group-hover:scale-110 transition" style={{ background: 'linear-gradient(135deg, #d4af37, #f9e077)', boxShadow: '0 0 10px rgba(212,175,55,0.4)' }}>
-                    <ArrowRight className="w-4 h-4 text-white" />
+                  {/* Feminine floral gradient background */}
+                  <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, #fdf2f8 0%, #fce7f3 30%, #f3e8ff 60%, #fdf4ff 100%)' }} />
+                  {/* Shimmer overlay */}
+                  <div className="absolute inset-0 opacity-40" style={{ background: 'radial-gradient(ellipse at 30% 20%, rgba(255,182,193,0.5) 0%, transparent 60%), radial-gradient(ellipse at 80% 80%, rgba(212,175,55,0.2) 0%, transparent 50%)' }} />
+                  {/* Rose petal decorative circles */}
+                  <div className="absolute -top-4 -right-4 w-20 h-20 rounded-full opacity-20" style={{ background: 'radial-gradient(circle, #f9a8d4, transparent)' }} />
+                  <div className="absolute -bottom-3 -left-3 w-16 h-16 rounded-full opacity-15" style={{ background: 'radial-gradient(circle, #c084fc, transparent)' }} />
+
+                  <div className="relative p-6 flex flex-col gap-3">
+                    <div className="flex items-center gap-2">
+                      <span className="text-2xl">{cat.icon}</span>
+                      <h3 className="text-sm font-black" style={{ color: '#2d1b4e' }}>{cat.label}</h3>
+                    </div>
+                    <p className="text-xs font-bold" style={{ color: '#9d174d' }}>{cat.price} per piece</p>
+                    {/* Gold Click Here */}
+                    <div className="flex items-center gap-2 mt-1">
+                      <span className="text-sm font-black italic tracking-wide gold-glitter">✦ Click Here to Shop</span>
+                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition" style={{ color: '#d4af37' }} />
+                    </div>
                   </div>
                 </Link>
               ))}
