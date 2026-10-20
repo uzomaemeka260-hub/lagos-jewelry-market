@@ -84,7 +84,7 @@ export default function Home() {
                   <Link
                     key={item}
                     href={`/market-hub/${wing.slug}?item=${encodeURIComponent(item.toLowerCase())}`}
-                    className="text-[10px] font-bold uppercase tracking-wide px-2.5 py-1 rounded-md transition hover:scale-105 duration-150"
+                    className="text-sm font-bold uppercase tracking-wide px-4 py-2 rounded-lg transition hover:scale-105 duration-150 flex-1 text-center"
                     style={{ background: 'linear-gradient(135deg, rgba(212,175,55,0.15), rgba(219,39,119,0.10))', border: '1px solid rgba(212,175,55,0.5)', color: '#6b21a8' }}
                   >
                     {item}
