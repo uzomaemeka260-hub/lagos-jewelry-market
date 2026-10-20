@@ -13,19 +13,19 @@ interface PageProps {
 const BRAND_INFO: Record<string, { headline: string; description: string }> = {
   sunbelle: {
     headline: '✨ Sunbelle Jewelry Collection',
-    description: 'Sunbelle is one of Lagos finest gold-plated jewelry brands, known for its elegant earring sets and stunning earring & pendant combinations. Each piece is crafted to last and designed to turn heads. Browse our latest Sunbelle inventory below — all items available for immediate WhatsApp order and delivery.'
+    description: 'Sunbelle is one of Lagos finest gold-plated jewelry brands, known for its elegant earring sets and stunning earring & pendant combinations. Every Sunbelle piece is non-tarnish, crafted to maintain its shine and last long even with daily wear. Each piece is designed to turn heads. Browse our latest Sunbelle inventory below — all items available for immediate WhatsApp order and delivery.'
   },
   xuping: {
     headline: '💎 Xuping Jewelry Collection',
-    description: 'Xuping is a premium Chinese gold-plated jewelry brand trusted by thousands of Nigerian buyers. Renowned for its bold designs, long-lasting finish, and affordable luxury. From classic earrings to statement earring & pendant sets, Xuping pieces are perfect for everyday wear and special occasions.'
+    description: 'Xuping is a premium Chinese gold-plated jewelry brand trusted by thousands of Nigerian buyers. All Xuping pieces are non-tarnish, renowned for their bold designs, long-lasting finish, and affordable luxury. From classic earrings to statement earring & pendant sets, Xuping pieces are perfect for everyday wear and special occasions without losing their shine.'
   },
   cf: {
     headline: '🌟 CF Jewelry Collection',
-    description: 'CF Jewelry offers a wide range of beautifully crafted gold-plated pieces that combine modern style with traditional elegance. Popular among Lagos market buyers for their quality finish and variety of designs. Perfect for gifting or personal styling.'
+    description: 'CF Jewelry offers a wide range of beautifully crafted non-tarnish gold-plated pieces that combine modern style with traditional elegance. Popular among Lagos market buyers for their quality finish, durability, and variety of designs. Perfect for gifting or personal styling — guaranteed to stay shiny.'
   },
   jbl: {
     headline: '👑 JBL Jewelry Collection',
-    description: 'JBL Jewelry is a top-tier gold-plated brand offering three distinct categories — classic earrings, earring & pendant sets, and luxurious long sets. Whether you are dressing up for an event or looking for an everyday accessory, JBL has something for every occasion and budget.'
+    description: 'JBL Jewelry is a top-tier non-tarnish gold-plated brand offering three distinct categories — classic earrings, earring & pendant sets, and luxurious long sets. All JBL pieces are built to last without tarnishing. Whether you are dressing up for an event or looking for an everyday accessory, JBL has something for every occasion and budget.'
   },
 };
 
