@@ -4,6 +4,7 @@ import { getWingBySlug, getProductsByWingId } from '@/lib/supabase';
 import ProductCard from '@/components/ProductCard';
 import Link from 'next/link';
 import { ArrowLeft, HelpCircle, Sparkles, ArrowRight } from 'lucide-react';
+import WingPageClient from '@/components/WingPageClient';
 
 interface PageProps {
   params: Promise<{ wing: string }>;
@@ -149,11 +150,7 @@ export default async function MarketWingPage({ params, searchParams }: PageProps
 
         {/* Products grid */}
         {filtered && filtered.length > 0 && (
-          <div className="mt-8 grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-            {filtered.map((product: any) => (
-              <ProductCard key={product.id} item={product} />
-            ))}
-          </div>
+          <WingPageClient products={filtered} />
         )}
 
         {/* No inventory */}
@@ -167,11 +164,7 @@ export default async function MarketWingPage({ params, searchParams }: PageProps
 
         {/* Wing-level products (no filter) */}
         {!itemFilter && !catFilter && products && products.length > 0 && (
-          <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-            {products.map((product: any) => (
-              <ProductCard key={product.id} item={product} />
-            ))}
-          </div>
+          <WingPageClient products={products} />
         )}
 
         {!itemFilter && !catFilter && (!products || products.length === 0) && (
